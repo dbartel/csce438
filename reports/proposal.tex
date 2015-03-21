@@ -23,13 +23,27 @@ What is the vision for your project? Why should we care?
 What do you expect to build?
 
 \section*{Design Rationale}
-Based on our class discussion, what is the rationale for your system and the APIs you are bringing together?
+
+
+The following APIs will be used:
+\begin{enumerate}
+  \item[\textbullet] \textbf{WhatTheTrend} - A web service that finds popular Twitter trends \\
+    \url{http://www.whatthetrend.com}
+  \item[\textbullet] \textbf{Twitter} - Twitter's API will be used to search for Tweets based on a current topic \\
+    \url{https://dev.twitter.com}
+  \item[\textbullet] \textbf{Words API} - ``An API for the Englihs language'' - will be used for finding synonyms for rewording Tweets \\ 
+    \url{https://www.wordsapi.com}
+  \item[\textbullet] \textbf{Google Image Search} - will be used to find appropriate pictures for the tweet the user is posting \\
+    \url{https://developers.google.com/custom-search/json-api/v1/overview}
+\end{enumerate}
 	
 \section*{Technical Details}
 
 \subsection*{Implementation}
-The application will be a single-page \textbf{AngularJS} application served running on a server using the \textbf{Flask} microframework
+The application will be a single-page \textbf{AngularJS} application served running on a server using the \textbf{Flask} web microframework.
 The GitHub repository is located here: \url{https://github.com/dbartel/csce438}.
+
+
 
 \subsection*{Workflow}
 \begin{enumerate}
