@@ -17,13 +17,22 @@
 \maketitle
 
 \section*{Motivation}
-What is the vision for your project? Why should we care?
+
+% Ideas (write them better)
+%- twitter is social networking in it's barest form
+%- trends rise and fall on twitter quickly
+%- maybe we can use a computer to write better tweets
+%  - see what's popular
+%  - analyze why it's popular
+%  - create our own version of this popular thing
+
 
 \section*{Goal}
-What do you expect to build?
+
+This application is meant to be used to allow a user to analyze popular Tweets and craft a post for Twitter that maximizes visibility 
+based on currently trending events. This will be accomplished by finding popular trends and analyzing the content of popular tweets by examining word frequency, hashtag usage, and image usage. 
 
 \section*{Design Rationale}
-
 
 The following APIs will be used:
 \begin{enumerate}
@@ -43,12 +52,15 @@ The following APIs will be used:
 The application will be a single-page \textbf{AngularJS} application served running on a server using the \textbf{Flask} web microframework.
 The GitHub repository is located here: \url{https://github.com/dbartel/csce438}.
 
-
-
 \subsection*{Workflow}
 \begin{enumerate}
 	\item[\textbullet] \textbf{User Input:}
-	\item[\textbullet] \textbf{Output:}
+          \begin{enumerate}
+            \item[1.] Select a trend
+            \item[2.] Synthesize tweets
+            \item[3.] Reword tweet
+          \end{enumerate}
+	\item[\textbullet] \textbf{Output:} a tweet ready to post
 \end{enumerate}
 \textit{sketches go here}
 
