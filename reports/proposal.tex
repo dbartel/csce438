@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{graphicx}
 
 \title{Team ``I'm part of too many teams" Proposal}
 \date{}
@@ -16,21 +17,17 @@
 \begin{document}
 \maketitle
 
-\section*{Motivation}
-
-% Ideas (write them better)
-%- twitter is social networking in it's barest form
-%- trends rise and fall on twitter quickly
-%- maybe we can use a computer to write better tweets
-%  - see what's popular
-%  - analyze why it's popular
-%  - create our own version of this popular thing
-
-
 \section*{Goal}
 
 This application is meant to be used to allow a user to analyze popular Tweets and craft a post for Twitter that maximizes visibility 
 based on currently trending events. This will be accomplished by finding popular trends and analyzing the content of popular tweets by examining word frequency, hashtag usage, and image usage. 
+
+\section*{Motivation}
+
+Twitter is an interesting social network because it strips the ideas of other networks into their barest form.
+The rise and fall of various trends reflects the thoughts of hundreds of millions of people.
+Creating an application that can generate posts for Twitter that maximize visibility would be an interesting study in 
+social networks and groupthink.
 
 \section*{Design Rationale}
 
@@ -53,16 +50,8 @@ The application will be a single-page \textbf{AngularJS} application served runn
 The GitHub repository is located here: \url{https://github.com/dbartel/csce438}.
 
 \subsection*{Workflow}
-\begin{enumerate}
-	\item[\textbullet] \textbf{User Input:}
-          \begin{enumerate}
-            \item[1.] Select a trend
-            \item[2.] Synthesize tweets
-            \item[3.] Reword tweet
-          \end{enumerate}
-	\item[\textbullet] \textbf{Output:} a tweet ready to post
-\end{enumerate}
-\textit{sketches go here}
+
+\includegraphics{diagram.png}
 
 
 \end{document}
