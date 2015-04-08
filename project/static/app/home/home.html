@@ -1,3 +1,29 @@
-<div class="home-header">
-	<span>This is the Project</span>
+<div class="content-block">
+    <h1>Select Trend</h1>
+    <small>Here's a list of what's currently trending on Twitter, pick one to get started</small>
+    <div ng-repeat="trend in trends">
+        <span class="trend-title">{{trend.name}}</span>
+        <p>{{trend.description.text}}</p>
+        <button class="pure-button">Select Trend</button>
+    </div>
+    <button class="pure-button pure-button-primary">Next</button>
+</div>
+
+<div class="content-block">
+    <h1>Tweets</h1>
+    <div ng-repeat="tweet in tweets">
+        <span class="tweet">{{tweet.text}}</span>
+    </div>
+    <button class="pure-button pure-button-primary">Next</button>
+</div>
+
+<div class="content-block">
+    <h1>Words</h1>
+    <button class="pure-button pure-button-primary">Next</button>
+</div>
+
+<div class="content-block">
+    <h1>Ready to go?</h1>
+    <small>Here's your final tweet, make your final changes then tweet away!</small>
+    <button class="pure-button pure-button-success">Tweet</button>
 </div>
