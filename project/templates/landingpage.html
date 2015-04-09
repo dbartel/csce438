@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>        
+        <link rel="stylesheet" href="{{url_for('static', filename='css/landing.css')}}">
+        <title>CSCE 438</title>
+    </head>
+    <body>
+        <video autoplay loop poster="{{url_for('static', filename='img/filler.jpg')}}" id="background-vid">
+            <source src="{{url_for('static', filename='img/bg.webm')}}" type="video/webm">
+            <source src="{{url_for('static', filename='img/bg.gifv')}}" type="video/mp4">
+        </video>
+
+        <div class="header">
+            <h1>Welcome to this thing</h1>
+            <a href>log in</a>
+        </div>
+    </body>
+</html>
