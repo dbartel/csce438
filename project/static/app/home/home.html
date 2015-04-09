@@ -3,8 +3,8 @@
     <p>Here's a list of what's currently trending on Twitter, pick one to get started</p>
     <div class="pure-g">
         <div class="pure-u-1-2">
-            <div class="list-item" ng-repeat="trend in trends" class="trend">
-                    <span ng-click="selectTrend(trend)">{{ trend.name }}</span>
+            <div class="list-item trend" ng-repeat="trend in trends" ng-click="selectTrend(trend)">
+                    <div >{{ trend.name }}</div>
             </div>            
         </div>
         <div class="pure-u-1-2">
