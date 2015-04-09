@@ -21,10 +21,29 @@ html,body {
 }
 
 .header {
-    background: #1f8dd6;
+    background: #2196F3;
     color: white;
     width: 100%;
     text-align: center;
     margin: 0 auto;
     margin-top: 2%;
+}
+
+/* gives those text lists some kind of indicator that they're clickable */
+.list-item {
+    background-color:#fff;
+    color:#000;
+    
+    -webkit-transition: bcolor 250ms, ackground-color 250ms;
+    -moz-transition: bcolor 250ms, ackground-color 250ms;
+    -o-transition: bcolor 250ms, ackground-color 250ms;
+    -ms-transition: bcolor 250ms, ackground-color 250ms;
+    transition: color 250ms, background-color 250ms;
+
+
+}
+.list-item:hover {
+    background-color:#2196F3;
+    color:#fff;
+    cursor:pointer;
 }
