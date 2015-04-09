@@ -19,3 +19,12 @@ html,body {
 	font-size:3em;
 	float:right;
 }
+
+.header {
+    background: #1f8dd6;
+    color: white;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 2%;
+}
