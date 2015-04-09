@@ -1,28 +1,38 @@
-<div class="content-block">
-    <h1>Select Trend</h1>
-    <small>Here's a list of what's currently trending on Twitter, pick one to get started</small>
-    <div ng-repeat="trend in trends">
-        <span class="trend-title">{{trend.name}}</span>
-        <p>{{trend.description.text}}</p>
-        <button class="pure-button">Select Trend</button>
+<div class="content-block" ng-show="displayBlocks.trends">
+    <h1 class="header">Select Trend</h1>
+    <p>Here's a list of what's currently trending on Twitter, pick one to get started</p>
+    <div class="pure-g">
+        <div class="pure-u-1-2">
+        <div ng-repeat="trend in trends" class="trend">
+                <span ng-click="selectTrend(trend)">{{ trend.name }}</span>
+            </div>            
+        </div>
+        <div class="pure-u-1-2">
+                <h3 class="trend-title">{{ pickedTrend.name }}</h3>
+                <p class="trend-desc">{{ pickedTrend.description.text }}</p>
+                <span ng-hide="pickedTrend.last_trended_at == null"><strong>First started trending at</strong> {{ pickedTrend.last_trended_at }}</span>
+        </div>
     </div>
-    <button class="pure-button pure-button-primary">Next</button>
+
+    <button class="pure-button pure-button-primary" ng-click="displayTweets()">Next</button>
 </div>
 
-<div class="content-block">
+<div class="content-block slide-left" ng-show="displayBlocks.tweets">
     <h1>Tweets</h1>
+    <span>Top Tweets for {{pickedTrend.name}}</span>
+
     <div ng-repeat="tweet in tweets">
         <span class="tweet">{{tweet.text}}</span>
     </div>
     <button class="pure-button pure-button-primary">Next</button>
 </div>
 
-<div class="content-block">
+<div class="content-block" ng-show="displayBlocks.words">
     <h1>Words</h1>
     <button class="pure-button pure-button-primary">Next</button>
 </div>
 
-<div class="content-block">
+<div class="content-block" ng-show="displayBlocks.post">
     <h1>Ready to go?</h1>
     <small>Here's your final tweet, make your final changes then tweet away!</small>
     <button class="pure-button pure-button-success">Tweet</button>
