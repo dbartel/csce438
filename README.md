@@ -9,3 +9,8 @@ Project Repo for CSCE 438
 - [Twitter](https://dev.twitter.com/)
 - [Words](https://www.wordsapi.com/)
 - [Google](https://developers.google.com/custom-search/json-api/v1/overview)
+
+# Python Libraries
+
+- [Flask](http://flask.pocoo.org/)
+- [requests](http://docs.python-requests.org/en/latest/)
