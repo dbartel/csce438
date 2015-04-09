@@ -9,6 +9,11 @@ app.debug = True
 
 @app.route("/")
 def index():
+    return render_template("landingpage.html")
+
+
+@app.route("/tweet")
+def tweetBorrowing():
 	return render_template("tweetborrowing.html")
 
 
