@@ -2,7 +2,7 @@ define([
 	"angular",
 	"angularRoute"], function(angular) {
 		return angular.module("tbaApp.home", ["ui.router"])
-			.controller("HomeCtrl", ["$scope", "$http", function($scope, $http) {
+			.controller("HomeCtrl", ["$scope", "$http", "$timeout", function($scope, $http, $timeout) {
                 $scope.trends = [];
                 $scope.pickedTrend = {};
                 $scope.trendSelected = false;
@@ -32,8 +32,11 @@ define([
                 };
 
                 $scope.displayTweets = function() {
-                    $scope.displayBlocks.tweets = true;
-                }
+                    $scope.displayBlocks.trends = false;
+                    $timeout(function() {
+                        $scope.displayBlocks.tweets = true;                        
+                    }, 250);
+                };
 
 
             }]);
