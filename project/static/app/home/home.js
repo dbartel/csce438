@@ -15,7 +15,14 @@ define([
                     post: false
                 };
                 
-
+                //hide a page and display another
+                //h is hidden, s is displayed (correlates to displayBlocks object)
+                $scope.togglePage = function(h,s) {
+                    $scope.displayBlocks[h] = false;
+                    $timeout(function() {
+                        $scope.displayBlocks[s] = true;
+                    }, 250);
+                }
 
 
                 //fetch trends
@@ -31,12 +38,6 @@ define([
                     $scope.pickedTrend = trend;
                 };
 
-                $scope.displayTweets = function() {
-                    $scope.displayBlocks.trends = false;
-                    $timeout(function() {
-                        $scope.displayBlocks.tweets = true;                        
-                    }, 250);
-                };
 
 
             }]);

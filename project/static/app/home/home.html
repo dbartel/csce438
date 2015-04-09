@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <button class="pure-button pure-button-primary" ng-click="displayTweets()">Next</button>
+    <button class="pure-button pure-button-primary" ng-click="togglePage('trends', 'tweets')">Next</button>
 </div>
 
 <div class="content-block slide-left" ng-show="displayBlocks.tweets">
@@ -24,12 +24,12 @@
     <div ng-repeat="tweet in tweets">
         <span class="tweet">{{tweet.text}}</span>
     </div>
-    <button class="pure-button pure-button-primary">Next</button>
+    <button class="pure-button pure-button-primary" ng-click="togglePage('tweets', 'words')">Next</button>
 </div>
 
 <div class="content-block slide-left" ng-show="displayBlocks.words">
     <h1 class="header">Words</h1>
-    <button class="pure-button pure-button-primary">Next</button>
+    <button class="pure-button pure-button-primary" ng-click="togglePage('words', 'post')">Next</button>
 </div>
 
 <div class="content-block slide-left" ng-show="displayBlocks.post">
