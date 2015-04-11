@@ -38,6 +38,7 @@ define([
 
                 $scope.selectTrend = function(trend) {
                     $scope.pickedTrend = trend;
+                    $scope.trendSelected = true;
                 };
 
                 $scope.getTweets = function() {

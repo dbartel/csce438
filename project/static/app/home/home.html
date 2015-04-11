@@ -14,7 +14,10 @@
         </div>
     </div>
 
-    <button class="pure-button pure-button-primary" ng-click="togglePage('trends', 'tweets', getTweets)">Next</button>
+    <button class="pure-button pure-button-primary slide-top"
+            ng-click="togglePage('trends', 'tweets', getTweets)"
+            ng-show="trendSelected"
+            >Next</button>
 </div>
 
 <div class="content-block slide-left" ng-show="displayBlocks.tweets">
