@@ -17,12 +17,14 @@ define([
                 
                 //hide a page and display another
                 //h is hidden, s is displayed (correlates to displayBlocks object)
-                $scope.togglePage = function(h,s) {
+                //pass in an optional callback function to execute after page switch
+                $scope.togglePage = function(h,s, callback) {
                     $scope.displayBlocks[h] = false;
                     $timeout(function() {
                         $scope.displayBlocks[s] = true;
+                        if (callback) callback();
                     }, 250);
-                }
+                };
 
 
                 //fetch trends
@@ -38,7 +40,8 @@ define([
                     $scope.pickedTrend = trend;
                 };
 
-
+                $scope.getTweets = function() {
+                }
 
             }]);
         });
