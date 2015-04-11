@@ -41,6 +41,13 @@ define([
                 };
 
                 $scope.getTweets = function() {
+                    $http({
+                        method: "GET",
+                        url: "/api/tweets",
+                        params: { q:$scope.pickedTrend.name}
+                    }).success(function(data, status, headers, config) {
+                        $scope.tweets = data.statuses;
+                    });
                 }
 
             }]);
