@@ -1,5 +1,6 @@
 from flask import Flask, render_template, session, redirect, url_for, request
 from flask_oauth import OAuth
+import json
 import requests
 import keys
 
@@ -10,7 +11,7 @@ app = Flask(__name__)
 oauth = OAuth()
 
 twitter = oauth.remote_app("twitter",
-    base_url="https://api.twitter.com/1/",
+    base_url="https://api.twitter.com/1.1/",
     request_token_url='https://api.twitter.com/oauth/request_token',
     access_token_url='https://api.twitter.com/oauth/access_token',
     authorize_url='https://api.twitter.com/oauth/authenticate',
@@ -75,7 +76,20 @@ def getTrends():
 
 @app.route("/api/tweets", methods=["GET", "POST"])
 def twitterOps():
-    pass
+    if request.method == "GET":
+        search_term = request.args.get("q", None)
+        if search_term != None:
+            params = {
+                "q":search_term,
+                "result_type":"popular"
+            }
+            resp = twitter.get("search/tweets.json", data=params)
+
+            return json.dumps(resp.data)
+        else:
+            abort(400)
+    else:
+        return "SDF"
 
 @app.route("/api/words", methods=["GET"])
 def getWords():
