@@ -48,7 +48,7 @@ define([
                     }).success(function(data, status, headers, config) {
                         $scope.tweets = data.statuses;
                     });
-                }
+                };
 
             }]);
         });
