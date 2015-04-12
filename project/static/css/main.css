@@ -89,3 +89,7 @@ a:hover:before {
     transform: scaleX(1);    
 }
 
+.tweet {
+    border-bottom:2px solid;
+    margin:1.5em;
+}
