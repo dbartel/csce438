@@ -80,8 +80,7 @@ def twitterOps():
         search_term = request.args.get("q", None)
         if search_term != None:
             params = {
-                "q":search_term,
-                "result_type":"popular"
+                "q":search_term
             }
             resp = twitter.get("search/tweets.json", data=params)
 
