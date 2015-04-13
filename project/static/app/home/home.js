@@ -8,13 +8,22 @@ define([
                 $scope.pickedTrend = {};
                 $scope.trendSelected = false;
 
-
                 $scope.displayBlocks = {
                     trends: true,
                     tweets: false,
                     words: false,
                     post: false
                 };
+				
+				$scope.tweets = [
+				{
+					text: "sdfasdfasdf"
+				},
+				{
+					text: "asdasasd"
+				}
+				];
+				
                 
                 //hide a page and display another
                 //h is hidden, s is displayed (correlates to displayBlocks object)
