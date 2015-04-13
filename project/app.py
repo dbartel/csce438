@@ -90,9 +90,18 @@ def twitterOps():
     else:
         return "SDF"
 
-@app.route("/api/words", methods=["GET"])
-def getWords():
-    pass
+@app.route("/api/words/<word>", methods=["GET"])
+def getWords(word):
+    if word != None:
+        endpoint = "https://wordsapiv1.p.mashape.com/words/{0}/".format(word)
+        headers = {
+            "X-Mashape-Key": keys.MASHAPE_KEY,
+            "Accept": "application/json"
+        }
+
+        res = requests.get(endpoint, headers=headers)
+        return res.text
+    else: abort(400)
 
 
 
