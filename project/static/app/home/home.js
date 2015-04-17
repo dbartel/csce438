@@ -31,6 +31,10 @@ define([
                     }, 250);
                 };
 
+                $scope.isInvalid = function() {
+                    return ($scope.currentTweet.length > 140 || $scope.currentTweet.length == 0);
+                }
+
 
                 //fetch trends
                 $http({
@@ -86,7 +90,7 @@ define([
                     });
 
                     //tokenize string
-                    words = words.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+                    words = words.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()"]/g,"");
                     words = words.split(" ");
 
                     var badWords = [
