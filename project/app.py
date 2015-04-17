@@ -88,7 +88,19 @@ def twitterOps():
         else:
             abort(400)
     else:
-        return "SDF"
+        tweet = request.args.get("tweet", None)
+        if tweet != None:
+            params = {
+                "status": tweet
+            }
+            resp = twitter.post("statuses/update.json", data=params)
+
+            if (resp.status == 200):
+                return "Tweet successfully posted"
+            else:
+                return "Something went wrong"
+        else:
+            abort(400)
 
 @app.route("/api/words/<word>", methods=["GET"])
 def getWords(word):
