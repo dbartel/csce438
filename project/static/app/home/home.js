@@ -8,7 +8,8 @@ define([
                 $scope.pickedTrend = {};
                 $scope.trendSelected = false;
                 $scope.tweets = [];
-                
+                $scope.wordSuggestions = [];
+
                 $scope.displayBlocks = {
                     trends: true,
                     tweets: false,
@@ -55,6 +56,26 @@ define([
 
                     });
                 };
+
+                //hit words API 
+                $scope.fetchExamples = function(words) {
+                    _.forEach(words, function(w) {
+                        $http({
+                            method: "GET",
+                            url: "/api/words/" + w.word
+                        }).success(function(data, status, headers, config) {
+                            if (data.message) {
+                                $scope.wordSuggestions.push(w.word);
+                            }
+                            else {
+                                var result = data.results[0];
+                                var suggestion =  _.flatten([result.typeOf, result.instanceOf]);
+                                $scope.wordSuggestions = _.flatten([$scope.wordSuggestions, suggestion]);
+                            }
+                        });
+                    })
+
+                }
 
                 $scope.getWordFrequency = function() {
                     var tweets = _.pluck($scope.tweets, "text");
@@ -106,8 +127,10 @@ define([
                     });
 
                     console.log($scope.wordFrequency);
-                    //slice down to top 15
-                    $scope.wordFrequency = _.slice($scope.wordFrequency, 0, 15);
+                    //slice down to top 5
+                    $scope.wordFrequency = _.slice($scope.wordFrequency, 0, 5);
+
+                    $scope.fetchExamples($scope.wordFrequency);
 
                 }
 
