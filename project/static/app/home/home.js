@@ -7,7 +7,8 @@ define([
                 $scope.trends = [];
                 $scope.pickedTrend = {};
                 $scope.trendSelected = false;
-
+                $scope.tweets = [];
+                
                 $scope.displayBlocks = {
                     trends: true,
                     tweets: false,
@@ -15,16 +16,8 @@ define([
                     post: false
                 };
 				
-				$scope.tweets = [
-				{
-					text: "sdfasdfasdf"
-				},
-				{
-					text: "asdasasd"
-				}
-				];
 				
-                
+
                 //hide a page and display another
                 //h is hidden, s is displayed (correlates to displayBlocks object)
                 //pass in an optional callback function to execute after page switch
@@ -74,6 +67,22 @@ define([
                     words = words.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"");
                     words = words.split(" ");
 
+                    var badWords = [
+                        "",
+                        "RT",
+                        "a",
+                        "an",
+                        "the",
+                        "in",
+                        "of",
+                        "to",
+                        "as",
+                        "at",
+                        "on"
+                    ];
+
+                    words = _.difference(words, badWords);
+
                     //count frequencies
                     var frequencies = {};
                     _.forEach(words, function(w) {
@@ -83,10 +92,12 @@ define([
 
                     $scope.wordFrequency = [];
                     _.forIn(frequencies, function(value, key) {
-                        $scope.wordFrequency.push({
-                            word: key,
-                            freq: value
-                        });
+                        if (key != "") {
+                            $scope.wordFrequency.push({
+                                word: key,
+                                freq: value
+                            });
+                        }
                     });
 
                     //inverse sort
