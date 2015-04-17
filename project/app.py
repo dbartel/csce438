@@ -34,6 +34,8 @@ def index():
 
 @app.route("/login")
 def login():
+    if session.has_key("twitter_token"): 
+        return redirect(url_for("tweetBorrowing"))
     return twitter.authorize(callback=url_for("twitterCallback", next=request.args.get('next') or request.referrer or None))
 
 @app.route("/logout")
@@ -44,14 +46,15 @@ def logout():
 @app.route("/twitter-login")
 @twitter.authorized_handler
 def twitterCallback(resp):
+
     next_url = request.args.get("next") or url_for("tweet")
-    if session.has_key("twitter_token"): del session['twitter_token']
-# 
+    if session.has_key("twitter_token"): session.pop("twitter_token", None)
     session["twitter_token"] = (
         resp["oauth_token"],
         resp["oauth_token_secret"]
     )
     session["twitter_user"] = resp["screen_name"]
+
     return redirect(url_for("tweetBorrowing"))
 
 
