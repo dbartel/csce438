@@ -9,13 +9,14 @@ define([
                 $scope.trendSelected = false;
                 $scope.tweets = [];
                 $scope.wordSuggestions = [];
+                $scope.currentTweet = "";
 
                 $scope.displayBlocks = {
                     trends: true,
                     tweets: false,
-                    words: false,
                     post: false
                 };
+
 				
 				
 
@@ -133,6 +134,19 @@ define([
                     $scope.fetchExamples($scope.wordFrequency);
 
                 }
+
+                $scope.postTweet = function() {
+                    $http({
+                        method: "POST",
+                        url: "/api/tweets",
+                        params: {
+                            tweet:$scope.currentTweet
+                        }
+                    }).success(function(data, status, headers,config) {
+                        console.log(data);
+                        console.log(status);
+                    });
+                };
 
 
             }]);
