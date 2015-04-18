@@ -99,7 +99,7 @@ def twitterOps():
             resp = twitter.post("statuses/update.json", data=params)
 
             if (resp.status == 200):
-                return "Tweet successfully posted"
+                return json.dumps(resp.data)
             else:
                 return "Something went wrong"
         else:
