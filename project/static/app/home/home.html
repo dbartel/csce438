@@ -46,6 +46,7 @@
             </div>
         </div>
     </div>
+    <button class="pure-button pure-button-primary" ng-click="togglePage('tweets', 'trends')">Previous</button>
     <button class="pure-button pure-button-primary" ng-click="togglePage('tweets', 'post')">Next</button>
 </div>
 
@@ -56,6 +57,13 @@
         <p>{{currentTweet}}</p>
     </div>
     <button class="pure-button pure-button-primary" ng-click="postTweet()" ng-hide="isInvalid()">Tweet it!</button>
+    <button class="pure-button pure-button-primary" ng-click="togglePage('post', 'tweets')">Previous</button>
+
+    <div class="notification toggle" ng-show="tweetPosted">
+        Tweet successfully posted: <br>
+        <a href="{{twitterLink}}" target="_blank">check out your profile</a> <br>
+        <a href ng-click="closeNotification()">close</a>
+    </div>
 </div>
 
 <div>

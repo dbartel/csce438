@@ -7,6 +7,7 @@ define([
                 $scope.trends = [];
                 $scope.pickedTrend = {};
                 $scope.trendSelected = false;
+                $scope.tweetPosted = false;
                 $scope.tweets = [];
                 $scope.wordSuggestions = [];
                 $scope.currentTweet = "";
@@ -33,6 +34,10 @@ define([
 
                 $scope.isInvalid = function() {
                     return ($scope.currentTweet.length > 140 || $scope.currentTweet.length == 0);
+                };
+
+                $scope.closeNotification = function() {
+                    $scope.tweetPosted = false;
                 }
 
 
@@ -131,7 +136,7 @@ define([
                         return -n.freq;
                     });
 
-                    console.log($scope.wordFrequency);
+                    // console.log($scope.wordFrequency);
                     //slice down to top 5
                     $scope.wordFrequency = _.slice($scope.wordFrequency, 0, 5);
 
@@ -148,11 +153,12 @@ define([
                         }
                     }).success(function(data, status, headers,config) {
                         console.log(data);
-                        console.log(status);
+                        if (status == 200) {
+                            $scope.tweetPosted = true;
+                            $scope.twitterLink = "https://twitter.com/" + data.user.screen_name;
+                        }
                     });
                 };
-
-
             }]);
         });
 
