@@ -104,3 +104,28 @@ a:hover:before {
 .red {
     color:red;
 }
+
+.notification {
+    background-color: #EF6C00;
+    z-index: 2;
+    color: white;
+    height: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    margin-left: -350px;
+    margin-top: -200px;
+    font-size: 2em;
+    text-align: center;
+}
+
+.button-success {
+    background: #43A047;
+    color: white;
+}
+
+.button-secondary {
+    background: #2196F3;
+    color: white;
+}
