@@ -71,8 +71,8 @@ def tweetBorrowing():
 @app.route("/api/trends", methods=["GET"])
 def getTrends():
     params = {
-    "api_key": keys.TRENDING_KEY,
-    "woeid": "23424977"
+    "api_key": keys.TRENDING_KEY
+    # "woeid": "23424977"
     }
     req = requests.get("http://api.whatthetrend.com/api/v2/trends.json", params=params)
     return req.text
