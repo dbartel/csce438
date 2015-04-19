@@ -129,3 +129,16 @@ a:hover:before {
     background: #2196F3;
     color: white;
 }
+
+.data-block {
+    padding-bottom:40px;
+}
+
+.tweet-box {
+    position: fixed;
+    bottom:2px;
+}
+
+.tweet-form {
+    width:960px;
+}

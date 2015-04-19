@@ -9,12 +9,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 	</head>
-	<body ng-cloak>	
+	<body ng-cloak>
+		<a href="{{url_for('logout')}}">logout</a>
 		<div class="content" ui-view>
 		</div>
-		<div class="logout">
+<!-- 		<div class="logout">
 			<a href="{{url_for('logout')}}">logout</a>
-		</div>
+		</div> -->
 
 		<!-- requirejs bootstrap -->
 		<script type="text/javascript" src="{{ url_for('static', filename='lib/require/require.js') }}" data-main="/static/require-config"></script>

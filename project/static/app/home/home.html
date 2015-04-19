@@ -1,73 +1,78 @@
-<div class="content-block slide-left" ng-show="displayBlocks.trends">
-    <h1 class="header">Select Trend</h1>
-    <p>Here's a list of what's currently trending on Twitter, pick one to get started</p>
+<div class="data-block">
+    <div class="content-block slide-left" ng-show="displayBlocks.trends">
+        <h1 class="header">Select Trend</h1>
+        <p>Here's a list of what's currently trending on Twitter, pick one to get started</p>
 
-	
-    <div class="pure-g">
-        <div class="pure-u-1-2">
-            <div class="list-item trend" ng-repeat="trend in trends" ng-click="selectTrend(trend)">
-                    <div >{{ trend.name }}</div>
-            </div>            
-        </div>
-        <div class="pure-u-1-2">
-                <h3 class="trend-title">{{ pickedTrend.name }}</h3>
-                <p class="trend-desc">{{ pickedTrend.description.text }}</p>
-                <span ng-hide="pickedTrend.last_trended_at == null"><strong>First started trending at</strong> {{ pickedTrend.last_trended_at }}</span>
-        </div>
-    </div>
-
-    <button class="pure-button pure-button-primary toggle"
-            ng-click="togglePage('trends', 'tweets', getTweets)"
-            ng-show="trendSelected"
-            >Next</button>
-</div>
-
-<div class="content-block slide-left" ng-show="displayBlocks.tweets">
-    <h1 class="header">Tweets</h1>
-    <h2>Top Tweets for {{pickedTrend.name}}</h2>
-
-    <div class="pure-g">
-        <div class="pure-u-1-3">
-            <div class="tweet" ng-repeat="tweet in tweets" class="scale-fade">
-                <p>{{tweet.text}}</p>
-                <p>{{tweet.user.name}} @{{tweet.user.screen_name}}</p>
+    	
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <div class="list-item trend" ng-repeat="trend in trends" ng-click="selectTrend(trend)">
+                        <div >{{ trend.name }}</div>
+                </div>            
+            </div>
+            <div class="pure-u-1-2">
+                    <h3 class="trend-title">{{ pickedTrend.name }}</h3>
+                    <p class="trend-desc">{{ pickedTrend.description.text }}</p>
+                    <span ng-hide="pickedTrend.last_trended_at == null"><strong>First started trending at</strong> {{ pickedTrend.last_trended_at }}</span>
             </div>
         </div>
-        <div class="pure-u-1-3">
-            <h2>Most Frequently Occuring Words</h2>
-            <div ng-repeat="w in wordFrequency" class="scale-fade">
-                {{w.word}} - {{w.freq}}
+
+        <button class="pure-button pure-button-primary toggle"
+                ng-click="togglePage('trends', 'tweets', getTweets)"
+                ng-show="trendSelected"
+                >Next</button>
+    </div>
+
+    <div class="content-block slide-left" ng-show="displayBlocks.tweets">
+        <h1 class="header">Tweets</h1>
+        <h2>Top Tweets for {{pickedTrend.name}}</h2>
+
+        <div class="pure-g">
+            <div class="pure-u-1-3">
+                <div class="tweet" ng-repeat="tweet in tweets" class="scale-fade">
+                    <p>{{tweet.text}}</p>
+                    <p>{{tweet.user.name}} @{{tweet.user.screen_name}}</p>
+                </div>
+            </div>
+            <div class="pure-u-1-3">
+                <h2>Most Frequently Occuring Words</h2>
+                <div ng-repeat="w in wordFrequency" class="scale-fade">
+                    {{w.word}} - {{w.freq}}
+                </div>
+            </div>
+            <div class="pure-u-1-3">
+                <h2>Maybe Tweet about these things?</h2>
+                <div ng-repeat="w in wordSuggestions track by $index" class="scale-fade">
+                    {{w}}
+                </div>
             </div>
         </div>
-        <div class="pure-u-1-3">
-            <h2>Maybe Tweet about these things?</h2>
-            <div ng-repeat="w in wordSuggestions track by $index" class="scale-fade">
-                {{w}}
-            </div>
+        <button class="pure-button pure-button-primary" ng-click="togglePage('tweets', 'trends')">Previous</button>
+        <button class="pure-button pure-button-primary" ng-click="togglePage('tweets', 'post')">Next</button>
+    </div>
+
+    <div class="content-block slide-left" ng-show="displayBlocks.post">
+        <h1 class="header">Ready to go?</h1>
+        <small>Here's your final tweet, make your final changes then tweet away!</small>
+
+        <form class="pure-form">
+            <input ng-model="currentTweet" placeholder="Build your tweet here" class="tweet-form">
+            <span ng-class="{ red: isInvalid()}">Current Length: {{currentTweet.length}}</span>
+        </form>
+        <button class="pure-button pure-button-primary" ng-click="postTweet()" ng-hide="isInvalid()">Tweet it!</button>
+        <button class="pure-button pure-button-primary" ng-click="togglePage('post', 'tweets')">Previous</button>
+
+        <div class="notification toggle" ng-show="tweetPosted">
+            Tweet successfully posted: <br>
+            <a href="{{twitterLink}}" target="_blank">check out your profile</a> <br>
+            <a href ng-click="closeNotification()">close</a>
         </div>
     </div>
-    <button class="pure-button pure-button-primary" ng-click="togglePage('tweets', 'trends')">Previous</button>
-    <button class="pure-button pure-button-primary" ng-click="togglePage('tweets', 'post')">Next</button>
 </div>
 
-<div class="content-block slide-left" ng-show="displayBlocks.post">
-    <h1 class="header">Ready to go?</h1>
-    <small>Here's your final tweet, make your final changes then tweet away!</small>
-    <div class="tweet-preview">
-        <p>{{currentTweet}}</p>
-    </div>
-    <button class="pure-button pure-button-primary" ng-click="postTweet()" ng-hide="isInvalid()">Tweet it!</button>
-    <button class="pure-button pure-button-primary" ng-click="togglePage('post', 'tweets')">Previous</button>
-
-    <div class="notification toggle" ng-show="tweetPosted">
-        Tweet successfully posted: <br>
-        <a href="{{twitterLink}}" target="_blank">check out your profile</a> <br>
-        <a href ng-click="closeNotification()">close</a>
-    </div>
-</div>
-
-<div>
-    <strong>Tweet: </strong>
+<div class="tweet-box toggle" ng-hide="displayBlocks.post">
     <form class="pure-form">
-        <textarea rows="4" cols="50" ng-model="currentTweet"></textarea> <span ng-class="{ red: isInvalid()}">{{currentTweet.length}}</span>
+        <input ng-model="currentTweet" placeholder="Build your tweet here" class="tweet-form">
+        <span ng-class="{ red: isInvalid()}">{{currentTweet.length}}</span>
+    </form>
 </div>
