@@ -8,7 +8,6 @@ Project Repo for CSCE 438
 - [WhatTheTrend](http://www.whatthetrend.com/)
 - [Twitter](https://dev.twitter.com/)
 - [Words](https://www.wordsapi.com/)
-- [Google](https://developers.google.com/custom-search/json-api/v1/overview)
 
 # Python Libraries
 
